@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { string, shape } from 'prop-types';
 
-import Icon from './icon';
+import Icon from './Icon';
 
 export default function CircleButton(props) {
   const { style, name } = props;
