@@ -15,15 +15,15 @@ export default function AppBar() {
 const styles = StyleSheet.create({
   appbar: {
     width: '100%',
-    height: '104',
+    height: 104,
     backgroundColor: '#467FD3',
-    justifyCOntent: 'flex-end',
+    justifyContent: 'flex-end',
   },
   appbarInner: {
     alignItems: 'center',
   },
   appbarRight: {
-    postion: 'absolute',
+    position: 'absolute',
     right: 19,
     bottom: 16,
     color: 'rgba(255, 255, 255, 0.8)',
