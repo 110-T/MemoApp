@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   View, Text, TextInput, StyleSheet, TouchableOpacity, Alert,
 } from 'react-native';
@@ -10,6 +10,27 @@ export default function LoginScreen(props) {
   const { navigation } = props;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  // useEffect(() => {
+  //   console.log('userEffect');
+  //   return () => {
+  //     console.log('Unmount');
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      // console.log(user);
+      if (user) {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'MemoList' }],
+        });
+      }
+    });
+    console.log(unsubscribe);
+    return unsubscribe;
+  }, []);
 
   const handlePress = useCallback(() => {
     firebase.auth().signInWithEmailAndPassword(email, password)
