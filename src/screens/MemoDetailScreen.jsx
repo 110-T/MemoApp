@@ -26,7 +26,7 @@ export default function MemoDetailScreen(props) {
         setMemo({
           id: doc.id,
           bodyText: data.bodyText,
-          updateAt: data.updateAt.toDate(),
+          updateAt: data.updatedAt.toDate(),
         });
       });
     }
@@ -37,7 +37,7 @@ export default function MemoDetailScreen(props) {
     <View style={styles.container}>
       <View style={styles.memoHeader}>
         <Text style={styles.memoTitle} numberOfLines={1}>{memo && memo.bodyText}</Text>
-        <Text style={styles.memoDate}>{memo && dateToString(memo.updateAt)}</Text>
+        <Text style={styles.memoDate}>{memo && dateToString(memo.updatedAt)}</Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoText}>
@@ -47,7 +47,7 @@ export default function MemoDetailScreen(props) {
       <CircleButton
         style={{ top: 60, bottom: 'auto' }}
         name="pencil"
-        onPress={() => { navigation.navigate('MemoEdit'); }}
+        onPress={() => { navigation.navigate('MemoEdit', { id: memo.id, bodyText: memo.bodyText }); }}
       />
     </View>
   );
