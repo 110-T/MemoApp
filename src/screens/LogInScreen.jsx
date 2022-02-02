@@ -33,16 +33,17 @@ export default function LoginScreen(props) {
         setLoading(false);
       }
     });
-    console.log(unsubscribe);
+    // console.log(unsubscribe);
     return unsubscribe;
   }, []);
 
   const handlePress = useCallback(() => {
     setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
+      // .then((userCredential) => {
+        // const { user } = userCredential;
+        // console.log(user.uid);
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],
